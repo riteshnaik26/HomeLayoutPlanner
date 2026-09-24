@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>G+1+Terrace RCC Residential — Drawing Set (A4)</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; display: flex; font-family: -apple-system, Segoe UI, Arial, sans-serif;
+    background: #2b2b2f; color: #eee; height: 100vh; overflow: hidden;
+  }
+  nav {
+    width: 300px; min-width: 300px; background: #1c1c1f; overflow-y: auto;
+    border-right: 1px solid #3a3a3f; padding: 10px 0;
+  }
+  nav h1 { font-size: 14px; padding: 0 14px 10px; margin: 0 0 8px; border-bottom: 1px solid #3a3a3f; color: #fff; }
+  nav a {
+    display: block; padding: 8px 14px; color: #ccc; text-decoration: none; font-size: 13px;
+    border-left: 3px solid transparent; cursor: pointer;
+  }
+  nav a:hover { background: #2a2a2e; color: #fff; }
+  nav a.active { background: #33333a; color: #fff; border-left-color: #4da3ff; }
+  nav a .num { color: #4da3ff; font-weight: 600; margin-right: 6px; }
+  main { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .sheet { max-width: 100%; }
+  .sheet img { max-width: 100%; box-shadow: 0 4px 24px rgba(0,0,0,.5); border-radius: 2px; display: block; }
+  .sheet .label { text-align: center; font-size: 13px; color: #aaa; margin-top: 8px; }
+  header.top {
+    position: sticky; top: 0; background: rgba(43,43,47,.92); backdrop-filter: blur(4px);
+    width: 100%; padding: 6px 0 14px; text-align: center; font-size: 12px; color: #888; z-index: 5;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <h1>G+1+Terrace RCC Residential<br>Drawing Set — A4</h1>
+  <div id="navlist"></div>
+</nav>
+<main id="main">
+  <header class="top">Click a sheet on the left, or scroll. Rendered from GPlus1Terrace_Drawing_Set_A4.pdf @150dpi.</header>
+  <div id="sheets"></div>
+</main>
+<script>
+const SHEETS = [
+  ["00", "COVER / INDEX / DESIGN BASIS NOTES"],
+  ["01", "SITE DEVELOPMENT PLAN"],
+  ["02", "COLUMN LAYOUT PLAN (P1-P18)"],
+  ["03", "FOUNDATION LAYOUT PLAN (ISOLATED FOOTINGS)"],
+  ["04", "GROUND FLOOR PLAN (TWO RESIDENTIAL UNITS)"],
+  ["05", "FIRST FLOOR PLAN (4 ROOMS + GALLERY + BACK BALCONY)"],
+  ["06", "TERRACE FLOOR PLAN"],
+  ["07", "BEAM LAYOUT PLAN (OVER GROUND FLOOR COLUMNS)"],
+  ["08", "SLAB LAYOUT & REINFORCEMENT DIRECTION PLAN"],
+  ["08A", "TYPICAL REINFORCEMENT DETAILS (BAR SIZES & SPACING)"],
+  ["08B", "STEEL QUANTITY ESTIMATE (PRELIMINARY BBS SUMMARY)"],
+  ["08C", "PRELIMINARY MATERIAL & COST ESTIMATE"],
+  ["09", "STAIRCASE PLAN & SECTION (COMMON DOG-LEG STAIR — EXTERNAL)"],
+  ["10", "PLUMBING LAYOUT (WATER SUPPLY, SOIL & WASTE)"],
+  ["12", "BUILDING SECTIONS A-A & B-B"],
+  ["13", "FRONT ELEVATION (NORTH)"],
+  ["14", "SIDE ELEVATION (EAST)"],
+  ["15", "DIMENSIONED GROUND-FLOOR BLUEPRINT (MASTER SHEET)"],
+];
+
+const navlist = document.getElementById('navlist');
+const sheetsEl = document.getElementById('sheets');
+
+SHEETS.forEach(([no, title], i) => {
+  const pageNum = String(i + 1).padStart(2, '0');
+  const id = `sheet-${pageNum}`;
+
+  const a = document.createElement('a');
+  a.href = `#${id}`;
+  a.innerHTML = `<span class="num">${no}</span>${title}`;
+  navlist.appendChild(a);
+
+  const div = document.createElement('div');
+  div.className = 'sheet';
+  div.id = id;
+  div.innerHTML = `<img src="pages/page${pageNum}.png" alt="Sheet ${no}" loading="lazy">
+                    <div class="label">Sheet ${no} — ${title}</div>`;
+  sheetsEl.appendChild(div);
+});
+
+const links = [...navlist.querySelectorAll('a')];
+const sections = [...sheetsEl.querySelectorAll('.sheet')];
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const idx = sections.indexOf(e.target);
+      if (idx >= 0) links[idx].classList.add('active');
+    }
+  });
+}, { root: document.getElementById('main'), threshold: 0.4 });
+sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
