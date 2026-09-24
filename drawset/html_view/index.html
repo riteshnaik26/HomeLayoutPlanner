@@ -23,8 +23,9 @@
   nav a.active { background: #33333a; color: #fff; border-left-color: #4da3ff; }
   nav a .num { color: #4da3ff; font-weight: 600; margin-right: 6px; }
   main { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
-  .sheet { max-width: 100%; }
-  .sheet img { max-width: 100%; box-shadow: 0 4px 24px rgba(0,0,0,.5); border-radius: 2px; display: block; }
+  #sheets { width: 100%; min-width: 0; }
+  .sheet { width: 100%; max-width: 100%; }
+  .sheet img { width: 100%; height: auto; max-width: 100%; box-shadow: 0 4px 24px rgba(0,0,0,.5); border-radius: 2px; display: block; }
   .sheet .label { text-align: center; font-size: 13px; color: #aaa; margin-top: 8px; }
   header.top {
     position: sticky; top: 0; background: rgba(43,43,47,.92); backdrop-filter: blur(4px);

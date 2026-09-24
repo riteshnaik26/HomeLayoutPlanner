@@ -125,10 +125,9 @@ def make():
     chain_dim_h(ax, [0, 4, 11, 17, 28], -2.4, fontsize=6.4)
     dim_h(ax, 0, 28, -4.8, text="28'-0\" (BUILDING WIDTH, E-W)", fontsize=7)
     chain_dim_v(ax, [0, 12, 19, 26, 38], 30.5, fontsize=6.4)
-    dim_v(ax, 0, 38, 41.5, text="38'-0\" (BUILDING DEPTH, N-S)", fontsize=7)
+    dim_v(ax, 0, 38, 31.5, text="38'-0\" (BUILDING DEPTH, N-S)", fontsize=7)
 
-    scale_bar_ft(ax, -6, 40, unit=5, n=4)
-    set_view(ax, -9, 40, -8, 44)
+    set_view(ax, 0, 40, -8, 44)
     rotate_plan_cw90(ax)
     north_arrow(fig, 0.92, 0.90, angle=90)
 

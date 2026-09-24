@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "drawset-viewer",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-m", "http.server", "8642", "--directory", "drawset/html_view"],
+      "port": 8642
+    }
+  ]
+}
