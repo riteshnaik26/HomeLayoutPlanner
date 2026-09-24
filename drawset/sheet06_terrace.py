@@ -79,7 +79,7 @@ def make():
         "REVISION 8: Terrace slab matches the first floor below: main building + gallery cantilever over the bike-parking canopy, north extension covering only the cantilever width (P6/P9-P10 to canopy line), landing on P10.",
         "The extra slab previously shown extending the north extension back to the P11-P14 line (i.e. between P10 and P14) has been removed per client instruction.",
         "Parapet wall 3'-0\" high all around the terrace edge, coping on top.",
-        "REVISION 8: Common staircase relocated OUTSIDE, in the bike-parking zone between columns P2 and P3 -- the original 14' bay (see Sheet A-005), now 3'-0\" wide -- arriving at the terrace's East edge through a small headroom hood (min 7'-0\" clear over the top flight), per the client's markup.",
+        "REVISION 8: Common staircase relocated OUTSIDE, in the bike-parking zone between columns P2 and P3 -- the original 14' bay (see Sheet A-005), now 3'-0\" wide -- arriving at the terrace's East edge through a small headroom hood (min 7'-0\" clear over the top flight), \n per the client's markup.",
         "Two overhead RCC/sectional water tanks (each sized for a typical 1000-2000L), fed by a common riser from the common plumbing shaft below; verify combined capacity vs. daily demand for all 4 first-floor rooms + 2 ground-floor units.",
         "Two Solar PV panel zones on raised MS mounting structures, tilted south-facing, flanking the tanks so neither shades the other; provide a hot-water line from either tank to a solar water heater if required.",
         "Remaining terrace kept as open/future utility space; slope terrace surface (1:100 min) toward a proper rainwater drainage outlet with down-take pipe.",

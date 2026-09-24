@@ -57,5 +57,5 @@ def make():
         "The common staircase is now external (bike-parking zone, between P2 and P3) with its own independent waist slab -- see Sheet A-005; not part of this main-building slab.",
         "Provide extra top steel over all beam supports (negative moment zone), typically 0.3 x span length from the face of support, per structural design.",
         "M20 grade concrete, Fe500 grade reinforcement assumed typical; nominal cover 20mm (bottom) / 15mm (top) unless noted otherwise by the structural engineer.",
-    ], y=0.088)
+    ], y=0.088, fontsize=10)
     return fig

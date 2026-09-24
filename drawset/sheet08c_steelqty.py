@@ -139,54 +139,54 @@ def make():
     rows = compute()
     grand_total_kg = sum(r[4] for r in rows)
 
-    ax.text(5, 9.5, "PRELIMINARY STEEL QUANTITY ESTIMATE", fontsize=15, fontweight='bold', ha='center', family='monospace')
+    ax.text(5, 9.5, "PRELIMINARY STEEL QUANTITY ESTIMATE", fontsize=18, fontweight='bold', ha='center', family='monospace')
     ax.text(5, 9.1, "(thumb-rule quantities for budgeting/coordination -- NOT a substitute for a structural engineer's BBS)",
-            fontsize=8, ha='center', family='monospace', style='italic')
+            fontsize=12, ha='center', family='monospace', style='italic')
 
     col_x = [0.3, 3.5, 6.5, 8.6]
     headers = ["MEMBER", "QUANTITY / BASIS", "BAR SIZE(S)", "WEIGHT (kg)"]
     y = 8.6
     for cx, h in zip(col_x, headers):
-        ax.text(cx, y, h, fontsize=9, fontweight='bold', family='monospace')
+        ax.text(cx, y, h, fontsize=12, fontweight='bold', family='monospace')
     y -= 0.18
     ax.plot([0.2, 9.8], [y, y], color='black', lw=0.8)
     y -= 0.28
 
     for member, basis, bar_note, _len, wt in rows:
-        ax.text(col_x[0], y, member, fontsize=7.6, family='monospace')
-        ax.text(col_x[1], y, basis, fontsize=6.8, family='monospace')
-        ax.text(col_x[2], y, bar_note, fontsize=6.8, family='monospace')
-        ax.text(col_x[3], y, f"{wt:,.0f}", fontsize=7.6, family='monospace')
+        ax.text(col_x[0], y, member, fontsize=12, family='monospace')
+        ax.text(col_x[1], y, basis, fontsize=12, family='monospace')
+        ax.text(col_x[2], y, bar_note, fontsize=12, family='monospace')
+        ax.text(col_x[3], y, f"{wt:,.0f}", fontsize=12, family='monospace')
         y -= 0.34
 
     y -= 0.1
     ax.plot([0.2, 9.8], [y, y], color='black', lw=0.8)
     y -= 0.32
-    ax.text(col_x[0], y, "GRAND TOTAL", fontsize=10, fontweight='bold', family='monospace')
-    ax.text(col_x[3], y, f"{grand_total_kg:,.0f} kg", fontsize=10, fontweight='bold', family='monospace')
+    ax.text(col_x[0], y, "GRAND TOTAL", fontsize=12, fontweight='bold', family='monospace')
+    ax.text(col_x[3], y, f"{grand_total_kg:,.0f} kg", fontsize=12, fontweight='bold', family='monospace')
     y -= 0.3
-    ax.text(col_x[0], y, "", fontsize=9, family='monospace')
-    ax.text(col_x[3], y, f"≈ {grand_total_kg/1000:.2f} tonnes", fontsize=9, family='monospace')
+    ax.text(col_x[0], y, "", fontsize=12, family='monospace')
+    ax.text(col_x[3], y, f"≈ {grand_total_kg/1000:.2f} tonnes", fontsize=12, family='monospace')
 
     y -= 0.55
     built_up_sqft = G.GROUND_COVERAGE * 2  # GF + FF, roughly (excl. gallery/terrace extras, for a simple ratio check)
     ratio = grand_total_kg / built_up_sqft
     ax.text(0.3, y, f"Cross-check: {grand_total_kg:,.0f} kg / ~{built_up_sqft:.0f} sqft built-up (GF+FF) "
-            f"≈ {ratio:.2f} kg/sqft", fontsize=8, family='monospace')
+            f"≈ {ratio:.2f} kg/sqft", fontsize=12, family='monospace')
     y -= 0.26
     ax.text(0.3, y, "Typical Indian practice for a G+1 RCC-framed residence: 3.5-4.5 kg/sqft including footing, "
-            "column, beam & slab steel.", fontsize=7.6, family='monospace')
+            "column, beam & slab steel.", fontsize=12, family='monospace')
     y -= 0.24
     ax.text(0.3, y, "This estimate runs somewhat below that range because it uses minimum/typical bar counts and "
-            "spacings appropriate to a light, low-rise structure on ROCKY soil (as assumed) -- a structural", fontsize=7.0, family='monospace')
+            "spacings appropriate to a light, low-rise structure on ROCKY soil (as assumed) -- a structural", fontsize=12, family='monospace')
     y -= 0.20
     ax.text(0.3, y, "engineer's actual design, once wind/seismic zone and real loads are checked, commonly lands "
-            "within or somewhat above the typical range. Budget with a margin.", fontsize=7.0, family='monospace')
+            "within or somewhat above the typical range. Budget with a margin.", fontsize=12, family='monospace')
 
     notes_block(fig, [
         f"Steel grade {G.FE_GRADE}, concrete grade {G.CONCRETE_GRADE} (assumed). Unit weights per IS 1786: w(kg/m) = dia²(mm)/162.",
         "Quantities are derived directly from this drawing set's own grid/geometry (column count & height, beam/slab lengths & areas, footing/stair sizes) using the typical bar sizes and spacings shown on Sheet S-004A.",
         "EXCLUDED: laps/development length beyond the single splice/joint per member, wastage (add 3-5%), chairs/spacers, and extra steel for the terrace mumty/parapet or the cantilever (once finalised, it will likely need more top steel than this allows).",
-        "This is a PRELIMINARY quantity for budgeting and material planning only. The actual bar bending schedule (BBS), covering every individual bar's exact cut length, bend points and count, must be produced by the structural engineer from a full structural analysis before ordering steel or starting construction.",
+        "This is a PRELIMINARY quantity for budgeting and material planning only. The actual bar bending schedule (BBS), covering every individual bar's exact cut length, bend points and count, must be produced by the structural engineer from a full structural \n analysis before ordering steel or starting construction.",
     ], y=0.088)
     return fig

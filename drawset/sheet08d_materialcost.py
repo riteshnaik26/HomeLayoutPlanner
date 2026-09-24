@@ -187,82 +187,76 @@ def make():
     labour_total = sum(r[4] for r in labour_rows)
     grand_total = material_total + labour_total
 
-    ax.text(5, 9.55, "PRELIMINARY MATERIAL & COST ESTIMATE", fontsize=15, fontweight='bold', ha='center', family='monospace')
+    ax.text(5, 9.55, "PRELIMINARY MATERIAL & COST ESTIMATE", fontsize=18, fontweight='bold', ha='center', family='monospace')
     ax.text(5, 9.16, "(thumb-rule quantities for budgeting only -- rates are INDICATIVE, verify current local rates before use)",
-            fontsize=7.6, ha='center', family='monospace', style='italic')
+            fontsize=12, ha='center', family='monospace', style='italic')
 
     col_x = [0.3, 4.55, 5.75, 6.85, 8.05]
     headers = ["MATERIAL", "QUANTITY", "UNIT", "RATE (Rs)", "COST (Rs)"]
     y = 8.72
     for cx, h in zip(col_x, headers):
-        ax.text(cx, y, h, fontsize=9, fontweight='bold', family='monospace')
+        ax.text(cx, y, h, fontsize=12, fontweight='bold', family='monospace')
     y -= 0.18
     ax.plot([0.2, 9.8], [y, y], color='black', lw=0.8)
     y -= 0.30
 
     for item, qty, unit, rate, cost in rows:
-        ax.text(col_x[0], y, item, fontsize=7.6, family='monospace')
-        ax.text(col_x[1], y, f"{qty:,.0f}", fontsize=7.6, family='monospace', ha='right')
-        ax.text(col_x[2], y, unit, fontsize=7.6, family='monospace')
-        ax.text(col_x[3], y, f"{rate:,.0f}", fontsize=7.6, family='monospace', ha='right')
-        ax.text(col_x[4]+0.9, y, f"{cost:,.0f}", fontsize=7.6, family='monospace', ha='right')
+        ax.text(col_x[0], y, item, fontsize=12, family='monospace')
+        ax.text(col_x[1], y, f"{qty:,.0f}", fontsize=12, family='monospace', ha='right')
+        ax.text(col_x[2], y, unit, fontsize=12, family='monospace')
+        ax.text(col_x[3], y, f"{rate:,.0f}", fontsize=12, family='monospace', ha='right')
+        ax.text(col_x[4]+0.9, y, f"{cost:,.0f}", fontsize=12, family='monospace', ha='right')
         y -= 0.34
 
     y -= 0.04
     ax.plot([col_x[0], 9.8], [y, y], color='black', lw=0.5, linestyle=':')
     y -= 0.28
-    ax.text(col_x[0], y, "Material subtotal", fontsize=8, fontweight='bold', family='monospace')
-    ax.text(col_x[4]+0.9, y, f"{material_total:,.0f}", fontsize=8, fontweight='bold', family='monospace', ha='right')
+    ax.text(col_x[0], y, "Material subtotal", fontsize=12, fontweight='bold', family='monospace')
+    ax.text(col_x[4]+0.9, y, f"{material_total:,.0f}", fontsize=12, fontweight='bold', family='monospace', ha='right')
 
     y -= 0.40
-    ax.text(col_x[0], y, "LABOUR", fontsize=9, fontweight='bold', family='monospace')
+    ax.text(col_x[0], y, "LABOUR", fontsize=12, fontweight='bold', family='monospace')
     y -= 0.30
     for item, qty, unit, rate, cost in labour_rows:
-        ax.text(col_x[0], y, item, fontsize=7.6, family='monospace')
-        ax.text(col_x[1], y, f"{qty:,.0f}", fontsize=7.6, family='monospace', ha='right')
-        ax.text(col_x[2], y, unit, fontsize=7.6, family='monospace')
-        ax.text(col_x[3], y, f"{rate:,.0f}", fontsize=7.6, family='monospace', ha='right')
-        ax.text(col_x[4]+0.9, y, f"{cost:,.0f}", fontsize=7.6, family='monospace', ha='right')
+        ax.text(col_x[0], y, item, fontsize=12, family='monospace')
+        ax.text(col_x[1], y, f"{qty:,.0f}", fontsize=12, family='monospace', ha='right')
+        ax.text(col_x[2], y, unit, fontsize=12, family='monospace')
+        ax.text(col_x[3], y, f"{rate:,.0f}", fontsize=12, family='monospace', ha='right')
+        ax.text(col_x[4]+0.9, y, f"{cost:,.0f}", fontsize=12, family='monospace', ha='right')
         y -= 0.34
 
     y -= 0.04
     ax.plot([col_x[0], 9.8], [y, y], color='black', lw=0.5, linestyle=':')
     y -= 0.28
-    ax.text(col_x[0], y, "Labour subtotal", fontsize=8, fontweight='bold', family='monospace')
-    ax.text(col_x[4]+0.9, y, f"{labour_total:,.0f}", fontsize=8, fontweight='bold', family='monospace', ha='right')
+    ax.text(col_x[0], y, "Labour subtotal", fontsize=12, fontweight='bold', family='monospace')
+    ax.text(col_x[4]+0.9, y, f"{labour_total:,.0f}", fontsize=12, fontweight='bold', family='monospace', ha='right')
 
     y -= 0.10
     ax.plot([0.2, 9.8], [y, y], color='black', lw=0.8)
     y -= 0.32
-    ax.text(col_x[0], y, "GRAND TOTAL (material + labour, excl. finishes)", fontsize=9, fontweight='bold', family='monospace')
-    ax.text(col_x[4]+0.9, y, f"Rs {grand_total:,.0f}", fontsize=10, fontweight='bold', family='monospace', ha='right')
+    ax.text(col_x[0], y, "GRAND TOTAL (material + labour, excl. finishes)", fontsize=12, fontweight='bold', family='monospace')
+    ax.text(col_x[4]+0.9, y, f"Rs {grand_total:,.0f}", fontsize=12, fontweight='bold', family='monospace', ha='right')
 
     y -= 0.5
     built_up_sqft = G.GROUND_COVERAGE * 2
     ax.text(0.3, y, f"Material basis: RCC concrete {basis['rcc_cum']:.0f} cum (M20, 1:1.5:3) | Brickwork {basis['brick_net_cum']:.0f} cum net "
             f"(1:6 CM, {int(OPENING_DEDUCT*100)}% opening deduction) | Plaster {basis['plaster_net_sqm']:.0f} sqm net (12mm, 1:6)",
-            fontsize=6.4, family='monospace')
+            fontsize=10, family='monospace')
     y -= 0.20
     ax.text(0.3, y, f"Cement split: RCC {basis['rcc_cement_bags']:.0f} + brickwork {basis['brick_cement_bags']:.0f} + plaster "
             f"{basis['plaster_cement_bags']:.0f} bags. Sand split: RCC {basis['rcc_sand_cum']:.1f} + brickwork {basis['brick_sand_cum']:.1f} "
-            f"+ plaster {basis['plaster_sand_cum']:.1f} cum.", fontsize=6.4, family='monospace')
+            f"+ plaster {basis['plaster_sand_cum']:.1f} cum.", fontsize=10, family='monospace')
     y -= 0.20
     ax.text(0.3, y, f"Labour basis (client-supplied rates, 2026-09): RCC labour = Rs {RCC_LABOUR_RATE:.0f}/sqft x {basis['slab_area_sqft']:.0f} sqft "
-            f"RCC (slab) area cast.", fontsize=6.4, family='monospace')
+            f"RCC (slab) area cast.", fontsize=10, family='monospace')
     y -= 0.20
     ax.text(0.3, y, f"General labour = Rs {GENERAL_LABOUR_RATE:.0f}/day x {basis['general_labour_days']:.0f} labour-days, estimated from "
             f"brickwork ({basis['brick_labour_days']:.0f} days @ {BRICKWORK_PRODUCTIVITY:.1f} cum/day) + plastering "
-            f"({basis['plaster_labour_days']:.0f} days @ {PLASTER_PRODUCTIVITY:.0f} sqm/day).", fontsize=6.4, family='monospace')
+            f"({basis['plaster_labour_days']:.0f} days @ {PLASTER_PRODUCTIVITY:.0f} sqm/day).", fontsize=10, family='monospace')
     y -= 0.20
     ax.text(0.3, y, f"Material transformation/slab-filling crew = Rs {MT_CREW_DAY_RATE:.0f}/day ({MT_CREW_SKILLED} x Rs{MT_CREW_SKILLED_RATE:.0f} + "
             f"{MT_CREW_UNSKILLED} x Rs{MT_CREW_UNSKILLED_RATE:.0f}) x {basis['mt_days']:.0f} days, estimated from the {basis['rcc_cum']:.0f} cum "
-            f"RCC concrete @ {MT_PRODUCTIVITY:.0f} cum/day placement rate for this crew.", fontsize=6.4, family='monospace')
-    y -= 0.26
-    ax.text(0.3, y, f"Cross-check: Rs {grand_total:,.0f} / ~{built_up_sqft:.0f} sqft built-up (GF+FF) = Rs {grand_total/built_up_sqft:,.0f}/sqft "
-            f"for STRUCTURAL MATERIAL + LABOUR ONLY.", fontsize=6.4, family='monospace')
-    y -= 0.20
-    ax.text(0.3, y, "Excludes shuttering/formwork hire, doors/windows, flooring, paint, plumbing & electrical fixtures, waterproofing, "
-            "other trade labour, site supervision, contractor margin and GST.", fontsize=6.4, family='monospace')
+            f"RCC concrete @ {MT_PRODUCTIVITY:.0f} cum/day placement rate for this crew.", fontsize=10, family='monospace')
 
     north_arrow(fig, 0.92, 0.90)
 

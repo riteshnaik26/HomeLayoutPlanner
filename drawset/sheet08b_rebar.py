@@ -197,5 +197,5 @@ def make():
         "Nominal cover: 50mm to footings, 40mm to columns, 25mm to beams, 15-20mm to slabs (IS 456 Table 16), unless the structural engineer specifies otherwise.",
         "Lap lengths, development lengths, curtailment points and exact bar cutting/bending schedule (BBS) must be finalised by the structural engineer per IS 456 / SP 34, based on an actual analysis.",
         "See Sheet S-004B for the corresponding preliminary steel quantity estimate.",
-    ], y=0.088)
+    ], y=0.088, fontsize=10)
     return fig

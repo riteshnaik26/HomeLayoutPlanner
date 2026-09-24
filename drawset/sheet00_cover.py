@@ -29,7 +29,6 @@ def make():
         ("S-004B", "Steel Quantity Estimate (Preliminary BBS Summary)"),
         ("S-004C", "Preliminary Material & Cost Estimate"),
         ("A-005", "Staircase Plan & Section"),
-        ("P-001", "Plumbing Layout (Water Supply, Soil & Waste)"),
         ("A-006", "Building Sections A-A & B-B"),
         ("A-007", "Front Elevation (North)"),
         ("A-008", "Side Elevation (East)"),

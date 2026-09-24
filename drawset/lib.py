@@ -10,6 +10,7 @@ import matplotlib.patches as mpatches
 from matplotlib.path import Path
 import matplotlib.patheffects as pe
 import numpy as np
+import textwrap
 
 PROJECT_TITLE = "PROPOSED G+1+TERRACE RESIDENTIAL BUILDING"
 CLIENT = "Owner"
@@ -130,7 +131,7 @@ def _titleblock(fig, sheet_no, title, scale_txt, drawing_no):
             va='center', ha='right', family='monospace')
     return y1   # top edge of the title block, so notes_block can sit flush above it
 
-def notes_block(fig, notes, x=0.025, y=0.088, fontsize=10, title="NOTES:"):
+def notes_block(fig, notes, x=0.025, y=0.088, fontsize=8, title="NOTES:", wrap_width=None):
     # Border ALWAYS sized to fit the actual text (line count x fontsize),
     # flush on top of the title block -- not a fixed-height placeholder --
     # so it can never overflow into the title block or the drawing above,
@@ -139,9 +140,10 @@ def notes_block(fig, notes, x=0.025, y=0.088, fontsize=10, title="NOTES:"):
     # (TEXT_SCALE>1, which additionally boosts the font itself).
     ax = fig.add_axes([0, 0, 1, 1]); ax.axis('off')
     ax.set_xlim(0, 1); ax.set_ylim(0, 1)
-    txt = title + "\n" + "\n".join(f"{i+1}. {n}" for i, n in enumerate(notes))
+    wrapped_notes = [textwrap.fill(n, width=wrap_width) if wrap_width else n for n in notes]
+    txt = title + "\n" + "\n".join(f"{i+1}. {n}" for i, n in enumerate(wrapped_notes))
     fs = fontsize * max(TEXT_SCALE, 1.0)
-    n_lines = 1 + len(notes)
+    n_lines = 1 + sum(n.count("\n") + 1 for n in wrapped_notes)
     linespacing = 1.25
     line_h = fs * linespacing / 72.0 / FIG_H
     title_block_top = 0.095 + max(0.0, TITLE_SCALE - 1.0) * 0.09
