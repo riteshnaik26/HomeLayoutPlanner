@@ -51,7 +51,7 @@ def make():
 
     # typical FULL footing detail callout -- drawn AFTER rotation, directly in
     # the final (rotated) frame, so its own internal layout stacks correctly.
-    dx0, dy0 = 35, -45
+    dx0, dy0 = 50, -15
     ax.add_patch(mpatches.Rectangle((dx0, dy0), FOOT, FOOT, facecolor='0.88', edgecolor='black', lw=1.2))
     ax.add_patch(mpatches.Rectangle((dx0+2, dy0+2), PED, PED, facecolor='0.6', edgecolor='black', lw=1.0))
     column(ax, dx0+3, dy0+3, *G.COL_SIZE, fc='black')
@@ -59,14 +59,14 @@ def make():
     dim_v(ax, dy0, dy0+FOOT, dx0-1.4, text="6'-0\"", fontsize=7, right=False)
     ax.text(dx0+3, dy0+FOOT+1.2, "TYPICAL INTERIOR FOOTING (9 No.)", fontsize=7, ha='center',
             fontweight='bold', family='monospace')
-    ax.text(dx0+3, dy0-2.8, "18\" THK, PEDESTAL 2'x2' UPTO PLINTH,\nCOLUMN 12\"x15\" ABOVE",
+    ax.text(dx0+3, dy0-2.8, "18\" THK, PEDESTAL 2'x2' UPTO PLINTH, COLUMN 12\"x15\" ABOVE",
             fontsize=6.6, ha='center', family='monospace')
-    ax.text(dx0+3, dy0-5.2, "See Sheet S-004A for the HALF (P2,P3,P4,\nP6,P10,P11,P15) and CORNER (P1,P5)\nfooting details.", fontsize=6.4,
+    ax.text(dx0+3, dy0-4.8, "See Sheet S-004A for the HALF (P2,P3,P4,\nP6,P10,P11,P15) and CORNER (P1,P5)\nfooting details.", fontsize=6.4,
             ha='center', family='monospace', style='italic')
 
     # Section callout through a standard footing
-    sx0 = dx0 + 15
-    sy0 = dy0
+    sx0 = dx0 + 0
+    sy0 = dy0 + 15
     sw, sh = FOOT, 1.5
     hatch_section_cut(ax, sx0, sy0, sw, sh, spacing=0.4, lw=0.5)
     ax.add_patch(mpatches.Rectangle((sx0+2, sy0+sh), 2.0, 2.3, facecolor='none', edgecolor='black', lw=1.0))
