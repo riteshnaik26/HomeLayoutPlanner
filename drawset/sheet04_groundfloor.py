@@ -69,10 +69,6 @@ def draw_doors_windows(ax, rooms, flip=False, ext_x0=0.0, ext_x1=28.0):
     door(ax, 0.5, b[1]+b[3] if not flip else b[1], 3.0, wall='h', hinge='start', swing=-1 if not flip else 1)
     # REVISION 9: main entrance door, in the Living Room (hall), east wall
     door(ax, ext_x1, liv[1]+liv[3]-4.0, 3.0, wall='v', hinge='start', swing=-1)   # unit's own entry, east wall
-    # Kitchen's East wall -> external common staircase (falls within the kitchen's
-    # own y-range since the stair's 14' run, y=12-26, matches the corridor exactly)
-    ky0, ky1 = max(k[1], G.STAIR_Y[0]), min(k[1]+k[3], G.STAIR_Y[1])
-    door(ax, ext_x1, (ky0+ky1)/2 - 1.25, 2.5, wall='v', hinge='start', swing=1)
     window(ax, ext_x0, b[1]+3.5, 4.0, wall='v')
     window(ax, ext_x1, liv[1]+2.0, 5.0, wall='v')
     ventilator(ax, ext_x0, wc[1]+wc[3]/2-0.75, 1.5, wall='v')
@@ -136,7 +132,7 @@ def make():
         "Layout matches the client's own ground-floor sketch: two 12'-deep end units (Bedroom+Living, South and North) flanking a full-depth 14' central corridor.",
         "The 14' central corridor carries each unit's own WC (4'x7'), Shower (7'x7') and Kitchen, now widened to 17'x7' after removing the internal stair void.",
         "External walls 9\" thick; internal partitions 4.5\" thick; corridor/unit dividing walls 9\" (load-bearing, carry the floors above).",
-        "Each unit's MAIN ENTRANCE is on the Living Room (hall) East wall, plus a second door from its Kitchen's East wall giving direct access to the external common staircase.",
+        "Each unit's MAIN ENTRANCE is on the Living Room (hall) East wall; the Kitchen has no external stair door.",
         "REVISION 9: Added a 3'-0\" back door/passage between each Bedroom and its WC (washroom), for direct ensuite-style access without passing through the Living Room; swings into the Bedroom, clear of the WC fixture.",
         "Door sizes: unit entry 3'-0\"x7'-0\", back door (Bedroom-WC) 3'-0\"x7'-0\", other internal 2'-6\"x7'-0\". Window sizes: bedroom 4'-0\"x4'-0\", living room 5'-0\"x4'-6\". Ventilators 1'-6\"x1'-6\" to WC/Shower.",
     ], y=0.088)
